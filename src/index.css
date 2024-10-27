@@ -1,13 +1,312 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* General Text and Alignment */
+h3 {
+  font-size: var(--label-size);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.subtitle-p,
+.answer-summary {
+  text-align: center;
 }
+
+/* Common Button Styles */
+button {
+  display: block;
+  width: 80%;
+  padding: 8px 15px;
+  border-radius: var(--r8);
+  cursor: pointer;
+  border: 1px solid var(--stroke);
+  background-color: var(--surface1);
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  /* background-color: var(--surface2); */
+}
+
+/* Container Layouts */
+.outer-container,
+.quiz-container,
+.score-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.app-container,
+.answer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Quiz Progress Bar */
+.progress-bar {
+  height: 10px;
+  background-color: var(--correct);
+  margin-bottom: 20px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Score Card */
+.score-card {
+  border-radius: var(--r16);
+  display: flex;
+width: 500px;
+padding-bottom: 80px;
+flex-direction: column;
+gap: 16px;
+
+}
+
+/* Text Colors */
+.correct {
+  color: var(--correct);
+  font-weight: bold;
+}
+
+.incorrect {
+  color: var(--incorrect);
+  font-weight: bold;
+}
+
+/* Question Block */
+.question-block {
+  margin-top: 20px;
+  border-top: 1px dotted var(--stroke);
+  padding-top: 10px;
+}
+
+/* Answer Styling */
+.answer {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+/* Difficulty Tabs */
+.difficulty-tabs {
+  display: flex;
+  width: -webkit-fill-available;
+  height: 40px;
+  padding: 2px;
+  background: var(--surface2);
+  border-radius: var(--r16);
+}
+
+/* Tab Styles */
+.tab {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  font-family: var(--body-font);
+  font-size: var(--body-size);
+  cursor: pointer;
+  color: var(--content1);
+  transition: all 0.3s ease;
+}
+
+.tab:hover,
+.tab.active {
+  border-radius: var(--r16);
+}
+
+.tab.active {
+  background: var(--gradient-bg);
+  box-shadow: 0px 2px 8px rgba(179, 167, 142, 0.25);
+  color: var(--content1);
+}
+
+/* CTA and Lock Button Styles */
+.cta,
+.lock-button {
+  display: flex;
+  width: -webkit-fill-available;
+  height: 60px;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--r16);
+  font-family: var(--body-font);
+  font-size: var(--label-size);
+  font-weight: 400;
+  line-height: 140%;
+  color: var(--base1);
+  background: var(--content1);
+  opacity: 0.3;
+  cursor: not-allowed;
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.cta:not(:disabled),
+.lock-button.enabled {
+  opacity: 1;
+  cursor: pointer;
+  background-color: var(--content1);
+}
+
+.lock-button.enabled:hover,
+.cta:hover {
+  background: var(--content2);
+}
+
+.lock-button.enabled:hover {
+  background: var(--content2);
+}
+
+.lock-button:disabled,
+.cta:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Quiz Container and Header */
+.quiz-container {
+  max-width: 600px;
+  gap: 16px;
+  padding: 20px;
+  border-radius: var(--r16);
+  text-align: center;
+  font-family: var(--body-font);
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Header Text */
+.quiz-header h2 {
+  font-size: var(--subtitle-size);
+  color: var(--content1);
+}
+
+/* Restart Button */
+.restart-button {
+  display: flex;
+  font-size: var(--label-size);
+  color: var(--content1);
+  cursor: pointer;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  justify-content: flex-end;
+  appearance: none;
+  outline: none;
+}
+
+.restart-button:hover {
+  background: none;
+}
+
+.restart-icon {
+  height: 20px;
+  margin-right: 5px;
+}
+
+.restart-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Question Counter */
+.question-counter {
+  display: flex;
+  width: 100%;
+  color: var(--content1);
+  font-family: var(--body-font);
+  font-size: var(--body-size);
+  line-height: 140%;
+  background: var(--surface2);
+  padding: 4px;
+}
+
+/* Question Text */
+.question-text {
+  color: var(--content1);
+  font-family: var(--body-font);
+  font-size: var(--label-size);
+  text-align: start;
+}
+
+/* Answer Options */
+.answer-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.answer-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  font-size: var(--body-size);
+  font-family: var(--body-font);
+  font-weight: 300;
+  line-height: 140%;
+  color: var(--content1);
+  background: var(--gradient, linear-gradient(180deg, #FFF 0%, #FFF9EA 100%));
+  border: 0.2px solid var(--stroke);
+  border-radius: var(--r16);
+  box-shadow: var(--box-shadow-elevation1) rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.answer-button.selected {
+  background-color: var(--gradient2);
+  box-shadow: var(--box-shadow-elevation2) rgba(128, 120, 102, 0.3);
+  border: 2px solid var(--stroke);
+}
+
+.answer-button:hover {
+  background-color: var(--surface1);
+}
+
+.results {
+
+}
+
+.result-container {
+  display: flex;
+padding: 16px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 8px;
+align-self: stretch;
+border-radius: var(--r16, 16px);
+background: var(--base2, #FFFAEF);
+}
+
+.results-container  p {
+  font-size: var(--subtitle-size);
+  color: var(--content1, #333029);
+text-align: center;
+font-family: Roboto;
+font-style: normal;
+font-weight: 400;
+line-height: 140%; 
+}
+
+.score-text {
+  font-size: var(--subtitle-size);
+  line-height: var(--subtitle-line-height);
+  font-family: var(--body-font);
+  color: var(--content1);
+  text-align: center;
+  font-weight: 400;
+}
+

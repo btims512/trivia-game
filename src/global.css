@@ -1,0 +1,130 @@
+:root {
+  /* Colors */
+  --base1: #fffcf5;
+  --base2: #fffaef;
+  --surface1: #ffefcb;
+  --surface2: #f5e5c3;
+  --stroke: #ccbfa2;
+  --content1: #333029;
+  --content2: #191814;
+  --correct: #157E23;
+  --incorrect: #B81E1E;
+  
+  --gradient1: #ffffff;
+  --gradient2: #fff9ea;
+  --gradient-bg: linear-gradient(90deg, var(--gradient1), var(--gradient2));
+
+  /* Typography */
+  --title-font: 'Knewave', sans-serif;
+  --body-font: 'Roboto', sans-serif;
+  --title-size: 48px;
+  --subtitle-size: 24px;
+  --subtitle-line-height: 34px;
+  --label-line-height: 22px;
+  --body-line-height: 20px;
+  --label-size: 16px;
+  --body-size: 14px;
+
+  /* Radius */
+  --r16: 16px;
+  --r8: 8px;
+
+  --box-shadow-elevation1: 0px 2px 8px 0px; 
+  --box-shadow-elevation2: 0px 4px 8px 0px; 
+}
+
+/* Font Face */
+@font-face {
+  font-family: 'Knewave';
+  src: url('./assets/fonts/Knewave.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto-Regular.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto-Light.ttf') format('truetype');
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: var(--surface1);
+  color: var(--content1);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+span {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+h1, h2, h3 {
+  font-family: var(--title-font);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+.select-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+select {
+  width: 100%;
+  padding: 18px;
+  border-radius: var(--r16);
+  border: 0.2px solid var(--stroke);
+  background: linear-gradient(0deg, #FFF9EA 0%, #FFF 100%);
+  box-shadow: var(--box-shadow-elevation1) rgba(179, 167, 142, 0.25);
+  color: var(--content1, #333029);
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 150%; 
+  appearance: none; 
+  outline: none;
+}
+
+.select-arrow {
+  position: absolute;
+  top: 50%;
+  right: 16px; 
+  transform: translateY(-50%);
+  width: 25px;
+}
+
+.subtitle {
+  font-size: var(--subtitle-size);
+  line-height: var(--subtitle-line-height);
+  font-family: var(--body-font);
+}
+
+.button {
+  background-color: var(--surface1);
+  color: var(--content2);
+  font-family: var(--body-font);
+  border-radius: var(--r8);
+}
+
+.app-container {
+  max-width: 500px; 
+  padding: 20px 20px 20px; 
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Difficulty from "./Difficulty";
 import logo from "../assets/logo-trivio-lg.svg";
@@ -9,6 +9,7 @@ const Categories = ({ onSelectCategory }) => {
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [difficulty, setDifficulty] = useState("any");
+  const selectRef = useRef(null);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -17,9 +18,10 @@ const Categories = ({ onSelectCategory }) => {
           "https://opentdb.com/api_category.php"
         );
         setCategories(response.data.trivia_categories);
-        setLoading(false);
+        setTimeout(() => setLoading(false), 1000);
       } catch (error) {
         console.error("Error fetching categories:", error);
+        setLoading(false);
       }
     };
 
@@ -27,7 +29,12 @@ const Categories = ({ onSelectCategory }) => {
   }, []);
 
   if (loading) {
-    return <div>Loading categories...</div>;
+    return (
+      <div className="loading-container">
+        <img src={logo} alt="Trivio Logo Loading" className="loading-logo" />
+        <p className="loading-text">Loading categories...</p>
+      </div>
+    );
   }
 
   return (
@@ -40,6 +47,7 @@ const Categories = ({ onSelectCategory }) => {
         </p>
         <div className="select-container">
           <select
+            ref={selectRef}
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
@@ -50,13 +58,18 @@ const Categories = ({ onSelectCategory }) => {
               </option>
             ))}
           </select>
-          <img src={arrowIcon} alt="Dropdown arrow" className="select-arrow" />
+          <img
+            src={arrowIcon}
+            alt="Dropdown arrow"
+            className="select-arrow"
+            onClick={() => selectRef.current?.click()}
+          />
         </div>
-        <p>And now, choose your challenge level!</p>
+        <p className="subtitle-p">And now, choose your challenge level!</p>
         <Difficulty difficulty={difficulty} setDifficulty={setDifficulty} />
         <button
           className="cta"
-          disabled={!selectedCategory || !difficulty} 
+          disabled={!selectedCategory || !difficulty}
           onClick={() => onSelectCategory(selectedCategory, difficulty)}
         >
           Let the game begin!

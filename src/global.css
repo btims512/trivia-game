@@ -9,7 +9,7 @@
   --content2: #191814;
   --correct: #157E23;
   --incorrect: #B81E1E;
-  
+
   --gradient1: #ffffff;
   --gradient2: #fff9ea;
   --gradient-bg: linear-gradient(90deg, var(--gradient1), var(--gradient2));
@@ -29,8 +29,8 @@
   --r16: 16px;
   --r8: 8px;
 
-  --box-shadow-elevation1: 0px 2px 8px 0px; 
-  --box-shadow-elevation2: 0px 4px 8px 0px; 
+  --box-shadow-elevation1: 0px 2px 8px 0px;
+  --box-shadow-elevation2: 0px 4px 8px 0px;
 }
 
 /* Font Face */
@@ -53,6 +53,7 @@
   font-style: normal;
 }
 
+/* Reset Styles */
 * {
   margin: 0;
 }
@@ -62,8 +63,6 @@ body {
   background-color: var(--surface1);
   color: var(--content1);
   line-height: 1.6;
-  margin: 0;
-  padding: 0;
 }
 
 span {
@@ -78,9 +77,10 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 48px;
+  font-size: var(--title-size);
 }
 
+/* Select Input Styles */
 .select-container {
   position: relative;
   display: inline-block;
@@ -95,20 +95,28 @@ select {
   background: linear-gradient(0deg, #FFF9EA 0%, #FFF 100%);
   box-shadow: var(--box-shadow-elevation1) rgba(179, 167, 142, 0.25);
   color: var(--content1, #333029);
-  font-family: Roboto;
+  font-family: var(--body-font);
   font-size: 16px;
   font-weight: 300;
-  line-height: 150%; 
-  appearance: none; 
+  line-height: 150%;
+  appearance: none;
   outline: none;
 }
 
 .select-arrow {
   position: absolute;
   top: 50%;
-  right: 16px; 
+  right: 16px;
   transform: translateY(-50%);
   width: 25px;
+}
+
+/* Global Button Styles */
+.button {
+  background-color: var(--surface1);
+  color: var(--content2);
+  font-family: var(--body-font);
+  border-radius: var(--r8);
 }
 
 .subtitle {
@@ -117,14 +125,20 @@ select {
   font-family: var(--body-font);
 }
 
-.button {
-  background-color: var(--surface1);
-  color: var(--content2);
-  font-family: var(--body-font);
-  border-radius: var(--r8);
+/* Animation Keyframes */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.app-container {
-  max-width: 500px; 
-  padding: 20px 20px 20px; 
+@keyframes fill-up {
+  0% { fill: var(--stroke, #ccbfa2); opacity: 0.3; }
+  50% { opacity: 0.7; }
+  100% { fill: var(--content1, #333029); opacity: 1; }
+}
+
+@keyframes fillAnimation {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.8); opacity: 0.5; }
 }

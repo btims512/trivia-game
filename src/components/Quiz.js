@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Score from "./Score";
 import logo from "../assets/logo-trivio-sm.svg";
@@ -14,31 +13,32 @@ const Quiz = ({ category, onRestart }) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswerLocked, setIsAnswerLocked] = useState(false);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        const response = await axios.get(
-          `https://opentdb.com/api.php?amount=10&category=${category}&type=multiple`
-        );
-
-        // Process the fetched questions to include shuffled answers only once
-        const processedQuestions = response.data.results.map((question) => {
-          const allAnswers = [...question.incorrect_answers, question.correct_answer];
-          const shuffledAnswers = allAnswers.sort(() => Math.random() - 0.5); // Shuffle only once
-          return { ...question, shuffledAnswers };
-        });
-
-        setQuestions(processedQuestions);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching trivia data:", error);
-      }
-    };
-
     fetchQuestions();
   }, [category]);
+
+  const fetchQuestions = async () => {
+    try {
+      const response = await axios.get(
+        `https://opentdb.com/api.php?amount=10&category=${category}&type=multiple`
+      );
+
+      const processedQuestions = response.data.results.map((question) => {
+        const allAnswers = [
+          ...question.incorrect_answers,
+          question.correct_answer,
+        ];
+        const shuffledAnswers = allAnswers.sort(() => Math.random() - 0.5);
+        return { ...question, shuffledAnswers };
+      });
+      setQuestions(processedQuestions);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    } catch (error) {
+      console.error("Error fetching trivia data:", error);
+    }
+  };
 
   const handleAnswerSelection = (answer) => {
     setSelectedAnswer(answer);
@@ -60,14 +60,22 @@ const Quiz = ({ category, onRestart }) => {
     if (selectedAnswer === correctAnswer) {
       setScore(score + 1);
     }
-
     setCurrentQuestion(currentQuestion + 1);
     setSelectedAnswer(null);
     setIsAnswerLocked(false);
   };
 
+  const resetQuiz = () => {
+    onRestart();
+  };
+
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loading-container">
+        <img src={logo} alt="Trivio Logo Loading" className="loading-logo" />
+        <p className="loading-text">Loading quiz...</p>
+      </div>
+    );
   }
 
   if (currentQuestion >= questions.length) {
@@ -76,21 +84,18 @@ const Quiz = ({ category, onRestart }) => {
         score={score}
         totalQuestions={questions.length}
         userAnswers={userAnswers}
+        resetQuiz={resetQuiz}
       />
     );
   }
 
   const { question, shuffledAnswers } = questions[currentQuestion];
 
-  const handleRestart = () => {
-    onRestart();
-  };
-
   return (
     <div className="quiz-container">
       <div className="quiz-header">
         <img src={logo} alt="Trivio Logo" className="quiz-logo" />
-        <button className="restart-button" onClick={handleRestart}>
+        <button className="restart-button" onClick={resetQuiz}>
           <img src={restartIcon} alt="Restart" className="restart-icon" />
           Restart
         </button>
@@ -98,21 +103,26 @@ const Quiz = ({ category, onRestart }) => {
       <p className="question-counter">
         This quiz has 10 questions and they’re a hoot!
       </p>
-      <h3 className="question-text" dangerouslySetInnerHTML={{ __html: question }} />
+      <h3
+        className="question-text"
+        dangerouslySetInnerHTML={{ __html: question }}
+      />
       <div className="answer-container">
         <div className="answer-options">
           {shuffledAnswers.map((answer, index) => (
             <button
               key={index}
-              className={`answer-button ${selectedAnswer === answer ? 'selected' : ''}`}
+              className={`answer-button ${
+                selectedAnswer === answer ? "selected" : ""
+              }`}
               onClick={() => handleAnswerSelection(answer)}
               dangerouslySetInnerHTML={{ __html: answer }}
             />
           ))}
         </div>
       </div>
-      <button 
-        className={`lock-button ${isAnswerLocked ? 'enabled' : ''}`}
+      <button
+        className={`lock-button ${isAnswerLocked ? "enabled" : ""}`}
         onClick={handleLockAnswer}
         disabled={!isAnswerLocked}
       >

@@ -8,7 +8,14 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <p className="footer-text">
-          Built by <a href="https://bentims.com/" target="_blank" rel="noopener noreferrer">Ben Tims</a>
+          Built by{" "}
+          <a
+            href="https://bentims.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ben Tims
+          </a>
         </p>
         <div className="social-icons">
           <a
@@ -19,7 +26,7 @@ const Footer = () => {
             <img src={GitHubLogo} alt="GitHub" />
           </a>
           <a
-            href="https://www.linkedin.com/in/bentims/"
+            href="https://www.linkedin.com/in/benjamintims/"
             target="_blank"
             rel="noopener noreferrer"
           >

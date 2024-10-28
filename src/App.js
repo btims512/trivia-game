@@ -7,23 +7,30 @@ import Categories from "./components/Categories";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedDifficulty, setSelectedDifficulty] = useState(null);
+  const [isQuizStarted, setIsQuizStarted] = useState(false);
 
-  const handleCategorySelect = (category) => {
+  const handleStartQuiz = (category, difficulty) => {
     setSelectedCategory(category);
+    setSelectedDifficulty(difficulty);
+    setIsQuizStarted(true);
   };
 
   const resetQuiz = () => {
-    setSelectedCategory(null);
+    setIsQuizStarted(false);
   };
 
   return (
     <BrowserRouter>
-      {" "}
       <div className="App">
-        {!selectedCategory ? (
-          <Categories onSelectCategory={handleCategorySelect} />
+        {!isQuizStarted ? (
+          <Categories onSelectCategory={handleStartQuiz} />
         ) : (
-          <Quiz category={selectedCategory} onRestart={resetQuiz} />
+          <Quiz
+            category={selectedCategory}
+            difficulty={selectedDifficulty}
+            onRestart={resetQuiz}
+          />
         )}
       </div>
     </BrowserRouter>

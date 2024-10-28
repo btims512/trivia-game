@@ -18,17 +18,15 @@ const Categories = ({ onSelectCategory }) => {
           "https://opentdb.com/api_category.php"
         );
         setCategories(response.data.trivia_categories);
-        console.log("Categories fetched:", response.data.trivia_categories); // Log categories after fetching
-        setTimeout(() => setLoading(false), 1000);
+        // console.log("Categories fetched:", response.data.trivia_categories);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching categories:", error);
         setLoading(false);
       }
     };
-  
     fetchCategories();
   }, []);
-  
 
   if (loading) {
     return (
@@ -71,7 +69,7 @@ const Categories = ({ onSelectCategory }) => {
         <Difficulty difficulty={difficulty} setDifficulty={setDifficulty} />
         <button
           className="cta"
-          disabled={!selectedCategory || !difficulty}
+          disabled={!selectedCategory || difficulty === "any"}
           onClick={() => onSelectCategory(selectedCategory, difficulty)}
         >
           Let the game begin!

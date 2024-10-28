@@ -4,7 +4,7 @@ import Score from "./Score";
 import logo from "../assets/logo-trivio-sm.svg";
 import restartIcon from "../assets/icon-restart.png";
 
-const Quiz = ({ category, onRestart }) => {
+const Quiz = ({ category, difficulty, onRestart }) => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -14,31 +14,34 @@ const Quiz = ({ category, onRestart }) => {
   const [isAnswerLocked, setIsAnswerLocked] = useState(false);
 
   useEffect(() => {
-    fetchQuestions();
-  }, [category]);
-
-  const fetchQuestions = async () => {
-    try {
-      const response = await axios.get(
-        `https://opentdb.com/api.php?amount=10&category=${category}&type=multiple`
-      );
-
-      const processedQuestions = response.data.results.map((question) => {
-        const allAnswers = [
-          ...question.incorrect_answers,
-          question.correct_answer,
-        ];
-        const shuffledAnswers = allAnswers.sort(() => Math.random() - 0.5);
-        return { ...question, shuffledAnswers };
-      });
-      setQuestions(processedQuestions);
-      setTimeout(() => {
+    if (!category || !difficulty) return;
+  
+    const fetchQuestions = async () => {
+      try {
+        const response = await axios.get(
+          `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`
+        );
+  
+        const processedQuestions = response.data.results.map((question) => {
+          const allAnswers = [
+            ...question.incorrect_answers,
+            question.correct_answer,
+          ];
+          const shuffledAnswers = allAnswers.sort(() => Math.random() - 0.5);
+          return { ...question, shuffledAnswers };
+        });
+        setQuestions(processedQuestions);
+        // console.log("Fetched Questions:", processedQuestions);
+      } catch (error) {
+        console.error("Error fetching trivia data:", error);
+      } finally {
         setLoading(false);
-      }, 1000);
-    } catch (error) {
-      console.error("Error fetching trivia data:", error);
-    }
-  };
+      }
+    };
+  
+    fetchQuestions();
+  }, [category, difficulty]);
+  
 
   const handleAnswerSelection = (answer) => {
     setSelectedAnswer(answer);

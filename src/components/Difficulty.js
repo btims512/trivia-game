@@ -7,16 +7,15 @@ const Difficulty = ({ difficulty, setDifficulty }) => {
     <div className="difficulty-tabs">
       {difficulties.map((level) => (
         <button
-  key={level}
-  onClick={() => {
-    console.log("Selected Difficulty:", level); // Log selected difficulty
-    setDifficulty(level);
-  }}
-  className={`tab ${difficulty === level ? "active" : ""}`}
->
-  {level.charAt(0).toUpperCase() + level.slice(1)}
-</button>
-
+          key={level}
+          onClick={() => {
+            // console.log("Selected Difficulty:", level); 
+            setDifficulty(level); 
+          }}
+          className={`tab ${difficulty === level ? "active" : ""}`}
+        >
+          {level.charAt(0).toUpperCase() + level.slice(1)}
+        </button>
       ))}
     </div>
   );

@@ -18,15 +18,17 @@ const Categories = ({ onSelectCategory }) => {
           "https://opentdb.com/api_category.php"
         );
         setCategories(response.data.trivia_categories);
+        console.log("Categories fetched:", response.data.trivia_categories); // Log categories after fetching
         setTimeout(() => setLoading(false), 1000);
       } catch (error) {
         console.error("Error fetching categories:", error);
         setLoading(false);
       }
     };
-
+  
     fetchCategories();
   }, []);
+  
 
   if (loading) {
     return (

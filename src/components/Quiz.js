@@ -14,14 +14,18 @@ const Quiz = ({ category, difficulty, onRestart }) => {
   const [isAnswerLocked, setIsAnswerLocked] = useState(false);
 
   useEffect(() => {
-    if (!category || !difficulty) return;
-  
+    // If "any" is selected, omit category and difficulty from URL
+    const categoryParam =
+      category && category !== "any" ? `&category=${category}` : "";
+    const difficultyParam =
+      difficulty && difficulty !== "any" ? `&difficulty=${difficulty}` : "";
+
     const fetchQuestions = async () => {
       try {
         const response = await axios.get(
-          `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`
+          `https://opentdb.com/api.php?amount=10${categoryParam}${difficultyParam}&type=multiple`
         );
-  
+
         const processedQuestions = response.data.results.map((question) => {
           const allAnswers = [
             ...question.incorrect_answers,
@@ -30,18 +34,18 @@ const Quiz = ({ category, difficulty, onRestart }) => {
           const shuffledAnswers = allAnswers.sort(() => Math.random() - 0.5);
           return { ...question, shuffledAnswers };
         });
+
         setQuestions(processedQuestions);
+        setLoading(false);
         // console.log("Fetched Questions:", processedQuestions);
       } catch (error) {
         console.error("Error fetching trivia data:", error);
-      } finally {
         setLoading(false);
       }
     };
-  
+
     fetchQuestions();
   }, [category, difficulty]);
-  
 
   const handleAnswerSelection = (answer) => {
     setSelectedAnswer(answer);
@@ -72,7 +76,7 @@ const Quiz = ({ category, difficulty, onRestart }) => {
     onRestart();
   };
 
-  if (loading) {
+  if (loading || questions.length === 0) {
     return (
       <div className="loading-container">
         <img src={logo} alt="Trivio Logo Loading" className="loading-logo" />

@@ -8,7 +8,7 @@ const Categories = ({ onSelectCategory }) => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [difficulty, setDifficulty] = useState("any");
+  const [difficulty, setDifficulty] = useState("easy");
   const selectRef = useRef(null);
 
   useEffect(() => {
@@ -69,8 +69,9 @@ const Categories = ({ onSelectCategory }) => {
         <Difficulty difficulty={difficulty} setDifficulty={setDifficulty} />
         <button
           className="cta"
-          disabled={!selectedCategory || difficulty === "any"}
-          onClick={() => onSelectCategory(selectedCategory, difficulty)}
+          onClick={() =>
+            onSelectCategory(selectedCategory || "any", difficulty)
+          }
         >
           Let the game begin!
         </button>

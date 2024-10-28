@@ -9,7 +9,7 @@ const Difficulty = ({ difficulty, setDifficulty }) => {
         <button
           key={level}
           onClick={() => {
-            // console.log("Selected Difficulty:", level); 
+            console.log("Selected Difficulty:", level); 
             setDifficulty(level); 
           }}
           className={`tab ${difficulty === level ? "active" : ""}`}

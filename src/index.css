@@ -263,6 +263,7 @@ button:hover {
   font-size: 14px;
   font-weight: 300;
   line-height: 190%;
+  text-align: start;
 }
 
 .answer-button {
@@ -277,7 +278,7 @@ button:hover {
   line-height: 140%;
   color: var(--content1);
   background: var(--gradient, linear-gradient(180deg, #FFF 0%, #FFF9EA 100%));
-  border: 0.2px solid var(--stroke);
+  border: 3px none transparent;
   border-radius: var(--r16);
   box-shadow: var(--box-shadow-elevation1) rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -285,9 +286,11 @@ button:hover {
 }
 
 .answer-button.selected {
-  background-color: var(--gradient2);
-  box-shadow: var(--box-shadow-elevation2) rgba(128, 120, 102, 0.3);
-  border: 2px solid var(--stroke);
+  border-radius: var(--r16);
+  border-color: var(--content1);
+  border: 3px solid var(--content1);
+  background: var(--gradient, linear-gradient(180deg, #FFF 0%, #FFF9EA 100%));
+  padding: 17px;
 }
 
 .answer-button:hover {

@@ -71,7 +71,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
@@ -350,4 +350,60 @@ button:hover {
   color: var(--incorrect);
   text-decoration: line-through;
   font-weight: bold;
+}
+
+/* Ensure the App container takes up the full viewport height */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main content takes up remaining space, pushing footer to the bottom */
+.main-content {
+  flex: 1;
+}
+
+/* Footer styling remains the same */
+.footer {
+  background: var(--surface2, #F5E5C3);
+  padding: 8px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 485px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.footer-text {
+  color: var(--content1, #333029);
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 140%; /* 19.6px */
+  text-decoration: none;
+  color: black;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px; /* Spacing between icons */
+}
+
+.social-icons img {
+  height: 24px;
+  width: 24px;
+}
+
+.footer-text a {
+  color: black;
+  text-decoration: underline;
 }

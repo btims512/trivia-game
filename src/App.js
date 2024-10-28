@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Quiz from "./components/Quiz";
 import Categories from "./components/Categories";
+import Footer from "./components/Footer";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -23,18 +24,22 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        {!isQuizStarted ? (
-          <Categories onSelectCategory={handleStartQuiz} />
-        ) : (
-          <Quiz
-            category={selectedCategory}
-            difficulty={selectedDifficulty}
-            onRestart={resetQuiz}
-          />
-        )}
+        <div className="main-content">
+          {!isQuizStarted ? (
+            <Categories onSelectCategory={handleStartQuiz} />
+          ) : (
+            <Quiz
+              category={selectedCategory}
+              difficulty={selectedDifficulty}
+              onRestart={resetQuiz}
+            />
+          )}
+        </div>
+        <Footer />
       </div>
     </BrowserRouter>
   );
 }
+
 
 export default App;

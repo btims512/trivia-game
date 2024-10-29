@@ -133,7 +133,7 @@ const Quiz = ({ category, difficulty, onRestart }) => {
         onClick={handleLockAnswer}
         disabled={!isAnswerLocked}
       >
-        Lock It In!
+        Lock it in!
       </button>
     </div>
   );

@@ -24,7 +24,7 @@ const Score = ({ score, totalQuestions, userAnswers, resetQuiz }) => {
     <div className="score-card">
       <div className="results">
         <h1>Results</h1>
-        <p>Ta-da! 🎉 Here are your results!</p>
+        {/* <p>Ta-da! 🎉 Here are your results!</p> */}
       </div>
       <div className="result-container">
         <p className="score-text">

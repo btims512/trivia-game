@@ -81,6 +81,15 @@ button:hover {
 .app-container {
   max-width: 500px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  gap: 16px;
 }
 
 .app-container,
@@ -139,7 +148,7 @@ button:hover {
   height: 40px;
   padding: 2px;
   background: var(--surface2);
-  border-radius: var(--r16);
+  border-radius: var(--r14);
   overflow: hidden;
 }
 
@@ -154,12 +163,14 @@ button:hover {
   color: var(--content1);
   text-align: center;
   transition: color 0.3s ease;
+  border-radius: var(--r14); /* Updated to --r14 */
 }
 
 .tab:hover,
 .tab.active {
-  border-radius: var(--r16);
+  border-radius: var(--r14); /* Updated to --r14 */
 }
+
 
 .tab.active {
   background: var(--gradient-bg);
@@ -295,6 +306,10 @@ button:hover {
 
 .answer-button:hover {
   background-color: var(--surface1);
+}
+
+.select-arrow {
+  pointer-events: none;
 }
 
 /* Results Container */

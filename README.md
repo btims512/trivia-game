@@ -1,3 +1,5 @@
+![Trivio Screenshot](./public/social_share.png)
+
 # Trivio
 
 Trivio is an interactive, theme-customizable trivia game designed to deliver a fun and engaging quiz experience. This project demonstrates strong front-end development skills with a focus on React, component-driven design, and styling techniques. It's a great showcase of my ability to create responsive, accessible, and user-friendly web applications.
@@ -76,10 +78,6 @@ The main components and their functionality are as follows:
 - **ThemeSelector**: Enables theme customization for the user interface.
 - **Footer**: Displays additional information, such as social media links or app credits.
 
-## Screenshots
-
-_Add screenshots of the app to provide a visual understanding._
-
 ---
 
 ## API Integration
@@ -131,8 +129,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For more information about this project, feel free to reach out:
 
-- **GitHub**: [YourUsername](https://github.com/btims512)
-- **LinkedIn**: [Your Name](https://www.linkedin.com/in/benjamintims/)
+- **GitHub**: [btims](https://github.com/btims512)
+- **LinkedIn**: [benjamintims](https://www.linkedin.com/in/benjamintims/)
 
 ---
 

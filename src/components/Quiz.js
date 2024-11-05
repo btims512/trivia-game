@@ -12,13 +12,11 @@ const Quiz = ({ category, difficulty, onRestart }) => {
   const [userAnswers, setUserAnswers] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswerLocked, setIsAnswerLocked] = useState(false);
+  const [isRestartClicked, setIsRestartClicked] = useState(false); // Added state for clicked style
 
   useEffect(() => {
-    // If "any" is selected, omit category and difficulty from URL
-    const categoryParam =
-      category && category !== "any" ? `&category=${category}` : "";
-    const difficultyParam =
-      difficulty && difficulty !== "any" ? `&difficulty=${difficulty}` : "";
+    const categoryParam = category && category !== "any" ? `&category=${category}` : "";
+    const difficultyParam = difficulty && difficulty !== "any" ? `&difficulty=${difficulty}` : "";
 
     const fetchQuestions = async () => {
       try {
@@ -37,7 +35,6 @@ const Quiz = ({ category, difficulty, onRestart }) => {
 
         setQuestions(processedQuestions);
         setLoading(false);
-        // console.log("Fetched Questions:", processedQuestions);
       } catch (error) {
         console.error("Error fetching trivia data:", error);
         setLoading(false);
@@ -73,7 +70,11 @@ const Quiz = ({ category, difficulty, onRestart }) => {
   };
 
   const resetQuiz = () => {
-    onRestart();
+    setIsRestartClicked(true); // Set clicked style
+    setTimeout(() => {
+      setIsRestartClicked(false); // Reset style after delay
+      onRestart(); // Call the restart function from props
+    }, 200); // Delay to allow the style change to show
   };
 
   if (loading || questions.length === 0) {
@@ -102,7 +103,10 @@ const Quiz = ({ category, difficulty, onRestart }) => {
     <div className="quiz-container">
       <div className="quiz-header">
         <img src={logo} alt="Trivio Logo" className="quiz-logo" />
-        <button className="restart-button" onClick={resetQuiz}>
+        <button
+          className={`restart-button ${isRestartClicked ? "active" : ""}`}
+          onClick={resetQuiz}
+        >
           <img src={restartIcon} alt="Restart" className="restart-icon" />
           Restart
         </button>

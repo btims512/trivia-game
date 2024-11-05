@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Difficulty from "./Difficulty";
+import ThemeSelector from "./ThemeSelector";
 import logo from "../assets/logo-trivio-lg.svg";
 import arrowIcon from "../assets/icon-arrow-down.svg";
 
-const Categories = ({ onSelectCategory }) => {
+const Categories = ({ onSelectCategory, theme, toggleTheme, themeIcon }) => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -18,7 +19,6 @@ const Categories = ({ onSelectCategory }) => {
           "https://opentdb.com/api_category.php"
         );
         setCategories(response.data.trivia_categories);
-        // console.log("Categories fetched:", response.data.trivia_categories);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching categories:", error);
@@ -39,13 +39,12 @@ const Categories = ({ onSelectCategory }) => {
 
   return (
     <div className="app-container">
-      {" "}
-      {/* Consolidated container */}
       <img src={logo} alt="Trivio Logo" className="logo" />
       <h1>Trivio</h1>
       <p className="subtitle-p">
         What’s your vibe today? <br /> Pick a category, and let’s dive in!
       </p>
+
       <div
         className="select-container"
         onClick={() => selectRef.current?.click()}
@@ -64,6 +63,7 @@ const Categories = ({ onSelectCategory }) => {
         </select>
         <img src={arrowIcon} alt="Dropdown arrow" className="select-arrow" />
       </div>
+
       <p className="subtitle-p">And now, choose your challenge level!</p>
       <Difficulty difficulty={difficulty} setDifficulty={setDifficulty} />
       <button
@@ -72,6 +72,12 @@ const Categories = ({ onSelectCategory }) => {
       >
         Let the game begin!
       </button>
+      {/* Theme Selector */}
+      <ThemeSelector
+        theme={theme}
+        toggleTheme={toggleTheme}
+        themeIcon={themeIcon}
+      />
     </div>
   );
 };

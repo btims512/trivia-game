@@ -1,5 +1,5 @@
 :root {
-  /* Colors */
+  /* Default Theme */
   --base1: #fffcf5;
   --base2: #fffaef;
   --surface1: #ffefcb;
@@ -7,11 +7,10 @@
   --stroke: #ccbfa2;
   --content1: #333029;
   --content2: #191814;
-  --correct: #157E23;
-  --incorrect: #B81E1E;
-
   --gradient1: #ffffff;
   --gradient2: #fff9ea;
+  --correct: #157e23;
+  --incorrect: #b81e1e;
   --gradient-bg: linear-gradient(90deg, var(--gradient1), var(--gradient2));
 
   /* Typography */
@@ -32,6 +31,38 @@
 
   --box-shadow-elevation1: 0px 2px 8px 0px;
   --box-shadow-elevation2: 0px 4px 8px 0px;
+}
+
+/* Mint Theme */
+body.mint-theme {
+  --base1: #F9FFEF;
+  --base2: #EFFFD3;
+  --surface1: #E5F7C5;
+  --surface2: #DBEDBD;
+  --stroke: #B6C49C;
+  --content1: #2D3027;
+  --content2: #151712;
+  --gradient1: #FFFFFF;
+  --gradient2: #F4FFE1;
+  --correct: #151712;
+  --incorrect: #B81E1E;
+  --gradient-bg: linear-gradient(90deg, var(--gradient1), var(--gradient2));
+}
+
+/* Sky Theme */
+body.sky-theme {
+  --base1: #F9FDFE;
+  --base2: #F2FBFD;
+  --surface1: #DEF4FA;
+  --surface2: #CAEDF8;
+  --stroke: #A5C5CF;
+  --content1: #293134;
+  --content2: #141719;
+  --gradient1: #ffffff;
+  --gradient2: #EFFAFF;
+  --correct: #141719;
+  --incorrect: #B81E1E;
+  --gradient-bg: linear-gradient(90deg, var(--gradient1), var(--gradient2));
 }
 
 /* Font Face */
@@ -93,7 +124,7 @@ select {
   padding: 18px;
   border-radius: var(--r16);
   border: 0.2px solid var(--stroke);
-  background: linear-gradient(0deg, #FFF9EA 0%, #FFF 100%);
+  background: var(--gradient-bg);
   box-shadow: var(--box-shadow-elevation1) rgba(179, 167, 142, 0.25);
   color: var(--content1, #333029);
   font-family: var(--body-font);

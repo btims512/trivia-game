@@ -1,0 +1,49 @@
+.theme-selector-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.theme-selector-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border: none;
+  background: var(--surface1, #FFEFCB);
+  border-radius: var(--r8, 8px);
+  cursor: pointer;
+  font-family: var(--body-font, Arial, sans-serif);
+  font-size: 16px;
+  color: var(--content1, #333029);
+}
+
+.theme-icon {
+  width: 20px;
+}
+
+.theme-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  list-style: none;
+  padding: 0;
+  background: var(--surface1, #FFEFCB);
+  border-radius: var(--r8, 8px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.theme-dropdown li {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: var(--body-font, Arial, sans-serif);
+  color: var(--content1, #333029);
+}
+
+.theme-dropdown li:hover {
+  background: var(--surface2, #F5E5C3);
+}

@@ -80,6 +80,7 @@ button:hover {
 
 .app-container {
   max-width: 500px;
+  height: auto;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -87,7 +88,7 @@ button:hover {
   justify-content: center;
   max-width: 500px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 20px 80px 20px;
   text-align: center;
   gap: 16px;
 }
@@ -163,12 +164,12 @@ button:hover {
   color: var(--content1);
   text-align: center;
   transition: color 0.3s ease;
-  border-radius: var(--r14); /* Updated to --r14 */
+  border-radius: var(--r14); 
 }
 
 .tab:hover,
 .tab.active {
-  border-radius: var(--r14); /* Updated to --r14 */
+  border-radius: var(--r14); 
 }
 
 
@@ -182,7 +183,7 @@ button:hover {
 .cta,
 .lock-button {
   display: flex;
-  width: -webkit-fill-available;
+  width: 100%;
   height: 60px;
   padding: 12px 16px;
   border: none;
@@ -195,9 +196,8 @@ button:hover {
   line-height: 140%;
   color: var(--base1);
   background: var(--content1);
-  cursor: not-allowed;
-  opacity: 0.3;
-  transition: opacity 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .cta:not(:disabled),
@@ -231,8 +231,32 @@ button:hover {
   cursor: pointer;
   background: none;
   border: none;
-  padding: 0;
+  padding: 5px 8px;
   justify-content: flex-end;
+  border-radius: var(--r16);
+}
+
+.restart-button.active {
+  border-radius: var(--r8, 8px);
+  background: var(--surface2, #F5E5C3);
+}
+
+.restart-button {
+  display: flex;
+  font-size: var(--label-size);
+  color: var(--content1);
+  cursor: pointer;
+  background: none;
+  border: none;
+  justify-content: flex-end;
+  border-radius: var(--r16);
+  transition: background 0.3s ease, border-radius 0.3s ease; 
+}
+
+.restart-button:hover {
+  border-radius: var(--r8, 8px);
+  background: var(--surface2, #F5E5C3); 
+  padding: 5px 8px;
 }
 
 .restart-icon {
@@ -288,20 +312,20 @@ button:hover {
   font-weight: 300;
   line-height: 140%;
   color: var(--content1);
-  background: var(--gradient, linear-gradient(180deg, #FFF 0%, #FFF9EA 100%));
-  border: 3px none transparent;
+  background: var(--gradient-bg); 
+  border: 1px solid var(--stroke);
   border-radius: var(--r16);
-  box-shadow: var(--box-shadow-elevation1) rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .answer-button.selected {
   border-radius: var(--r16);
-  border-color: var(--content1);
   border: 3px solid var(--content1);
-  background: var(--gradient, linear-gradient(180deg, #FFF 0%, #FFF9EA 100%));
+  background: var(--gradient-bg); /* Uses theme-specific gradient */
   padding: 17px;
+  background-color: var(--surface2);
+  border-color: var(--content1);
 }
 
 .answer-button:hover {
@@ -321,7 +345,7 @@ button:hover {
   align-items: center;
   gap: 8px;
   align-self: stretch;
-  background: var(--base2, #FFFAEF);
+  background: var(--gradient-bg);
   border-radius: var(--r16);
 }
 
@@ -360,6 +384,22 @@ button:hover {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+body.mint-theme .correct::before {
+  background-image: url("./assets/icon-check-black.png"); /* Black icon for mint */
+}
+
+body.sky-theme .correct::before {
+  background-image: url("./assets/icon-check-black.png"); /* Black icon for sky */
+}
+
+.theme-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
 
 .incorrect {
   color: var(--incorrect);
@@ -423,4 +463,43 @@ button:hover {
 .footer-text a {
   color: black;
   text-decoration: underline;
+}
+
+#theme-select {
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-family: var(--body-font);
+  font-size: 14px;
+  appearance: none;
+  width: fit-content;
+  border-radius: var(--r8, 8px);
+  border: none;
+  outline: none;
+  background: none;
+  box-shadow: none;
+  cursor: pointer;
+  color: var(--content1);
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 140%;
+}
+
+.theme-selector-button {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  padding: 5px 8px;
+  align-items: center;
+}
+
+.theme-icon {
+  width: 20px;
+}
+
+#theme-select:hover {
+  border-radius: var(--r8, 8px); 
+  background: var(--surface2, #F5E5C3); 
+  padding: 5px 8px;
 }

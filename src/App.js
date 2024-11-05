@@ -5,13 +5,13 @@ import { BrowserRouter } from "react-router-dom";
 import Quiz from "./components/Quiz";
 import Categories from "./components/Categories";
 import Footer from "./components/Footer";
-import themeIcon from "./assets/theme.png"; // Import the theme icon
+import themeIcon from "./assets/theme.png";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
   const [isQuizStarted, setIsQuizStarted] = useState(false);
-  const [theme, setTheme] = useState("default"); // "default", "mint", or "sky"
+  const [theme, setTheme] = useState("default");
 
   useEffect(() => {
     document.body.classList.remove("mint-theme", "sky-theme");
@@ -45,7 +45,7 @@ function App() {
               onSelectCategory={handleStartQuiz}
               theme={theme}
               toggleTheme={toggleTheme}
-              themeIcon={themeIcon} // Pass theme icon as a prop
+              themeIcon={themeIcon}
             />
           ) : (
             <Quiz

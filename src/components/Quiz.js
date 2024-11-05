@@ -15,8 +15,10 @@ const Quiz = ({ category, difficulty, onRestart }) => {
   const [isRestartClicked, setIsRestartClicked] = useState(false); // Added state for clicked style
 
   useEffect(() => {
-    const categoryParam = category && category !== "any" ? `&category=${category}` : "";
-    const difficultyParam = difficulty && difficulty !== "any" ? `&difficulty=${difficulty}` : "";
+    const categoryParam =
+      category && category !== "any" ? `&category=${category}` : "";
+    const difficultyParam =
+      difficulty && difficulty !== "any" ? `&difficulty=${difficulty}` : "";
 
     const fetchQuestions = async () => {
       try {

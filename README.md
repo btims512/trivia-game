@@ -1,71 +1,139 @@
-# Getting Started with Create React App
+# Trivio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Trivio is an interactive, theme-customizable trivia game designed to deliver a fun and engaging quiz experience. This project demonstrates strong front-end development skills with a focus on React, component-driven design, and styling techniques. It's a great showcase of my ability to create responsive, accessible, and user-friendly web applications.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Interactive Quiz Experience**: Trivio provides users with ten trivia questions in each quiz session, testing their knowledge across various categories and difficulty levels.
+- **Theme Selector**: Users can customize the look and feel of the app by selecting different themes (e.g., default, mint, and sky), allowing them to personalize their experience.
+- **Progress Tracking**: Users can keep track of their progress through a dynamic question counter and see their final score upon completion.
+- **Responsive Design**: Optimized for both desktop and mobile devices, ensuring a seamless experience across all screen sizes.
+- **Accessible UI**: Fully keyboard-navigable with visually clear indicators, meeting WCAG accessibility standards.
+- **Customizable Difficulty Levels**: Users can select the difficulty level (easy, medium, hard) to tailor the challenge to their knowledge and skill level.
 
-### `npm start`
+## Project Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Trivio is a React application, built with a component-based architecture to maximize code reusability and maintainability. The app uses a combination of hooks and state management to dynamically update the quiz based on user interactions, and it integrates with the [Open Trivia Database API](https://opentdb.com/) to fetch trivia questions across various topics.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- **React**: For building UI components and managing application state.
+- **JavaScript (ES6+)**: Utilized throughout the project for logic and interactivity.
+- **CSS**: Customized styles with variables and modern layout techniques, including Flexbox.
+- **HTML5**: Semantic HTML to ensure accessibility and improve SEO.
+- **Axios**: For handling API requests and managing trivia data.
+- **Git & GitHub**: Version control for code management and collaboration.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation & Setup
 
-### `npm run build`
+To set up Trivio locally, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the Repository**:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   git clone https://github.com/your-username/trivio.git
+   cd trivio
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install Dependencies:**:
 
-### `npm run eject`
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Start the Development Server:**:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The application will open in development mode on http://localhost:3000.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Run Tests:**:
 
-## Learn More
+```bash
+npm test
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Launches the test runner in interactive watch mode.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. **Build for Production:**:
 
-### Code Splitting
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Builds the app for production in the build folder, optimizing the React application for best performance.
 
-### Analyzing the Bundle Size
+## App Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The main components and their functionality are as follows:
 
-### Making a Progressive Web App
+- **App**: The root component that manages the overall app structure and theme selection.
+- **Quiz**: Contains the main quiz logic, including question handling, answer selection, and score tracking.
+- **Categories**: Allows users to select their preferred quiz category.
+- **Difficulty**: Provides options for users to set the quiz difficulty level.
+- **ThemeSelector**: Enables theme customization for the user interface.
+- **Footer**: Displays additional information, such as social media links or app credits.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Screenshots
 
-### Advanced Configuration
+_Add screenshots of the app to provide a visual understanding._
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## API Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Trivio integrates with the [Open Trivia Database API](https://opentdb.com/) to retrieve random trivia questions. This API provides a wide range of categories and difficulty levels, enhancing the game’s variety and replayability.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# trivia-game
+## Accessibility
+
+Accessibility is a priority in Trivio. The app includes:
+
+- **Keyboard Navigation**: Every interactive element is accessible via the keyboard.
+- **ARIA Labels**: Screen reader users can navigate and understand the app with ease.
+- **High Contrast Themes**: Color contrast is carefully managed to ensure readability.
+
+---
+
+## Future Enhancements
+
+Some potential features and improvements that could be added to Trivio include:
+
+- **Timer**: Adding a countdown timer for each question to increase the challenge.
+- **Scoreboard**: Creating a global leaderboard where users can compare scores.
+- **Multiplayer Mode**: Allowing users to compete with friends in real-time.
+- **More Themes**: Expanding theme options to give users even more customization.
+
+---
+
+## Contributing
+
+Contributions to Trivio are welcome! If you’re interested in adding new features, improving the UI, or enhancing the quiz experience, please feel free to fork the repository, make your changes, and open a pull request.
+
+1. **Fork the repository**
+2. **Create a feature branch**: `git checkout -b feature/new-feature`
+3. **Commit your changes**: `git commit -m 'Add new feature'`
+4. **Push to the branch**: `git push origin feature/new-feature`
+5. **Open a Pull Request**
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+---
+
+## Contact
+
+For more information about this project, feel free to reach out:
+
+- **GitHub**: [YourUsername](https://github.com/btims512)
+- **LinkedIn**: [Your Name](https://www.linkedin.com/in/benjamintims/)
+
+---
+
+Trivio was created with passion for fun, learning, and interactive design. If you’re interested in seeing more of my work or discussing job opportunities, please get in touch. Thank you for checking out Trivio!

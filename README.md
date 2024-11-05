@@ -44,8 +44,9 @@ To set up Trivio locally, follow these steps:
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/your-username/trivio.git
-   cd trivio
+   git clone https://github.com/btims512/trivia-game.git
+   cd trivia-game
+
    ```
 
 2. **Install Dependencies:**:

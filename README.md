@@ -13,6 +13,17 @@ Trivio is an interactive, theme-customizable trivia game designed to deliver a f
 - **Accessible UI**: Fully keyboard-navigable with visually clear indicators, meeting WCAG accessibility standards.
 - **Customizable Difficulty Levels**: Users can select the difficulty level (easy, medium, hard) to tailor the challenge to their knowledge and skill level.
 
+## Theme Customization
+
+Trivio offers a theme customization feature, allowing users to switch between visually appealing color themes, including Default, Mint, and Sky. This feature is more than just aesthetic; it highlights a few key front-end skills and development techniques:
+
+- **CSS Variables**: Themes are powered by CSS custom properties, enabling efficient and dynamic styling changes across the app without additional JavaScript overhead.
+- **Component-Based Architecture**: The theme selector is integrated as a standalone, reusable component, showcasing modular development practices that enhance scalability and code readability.
+- **State Management**: React's `useState` hook manages the current theme, updating the app styling instantly with minimal re-rendering.
+- **Responsive and Accessible Design**: Each theme adheres to WCAG color contrast standards, ensuring readability for all users, including those with visual impairments. Interactive elements and hover states are carefully styled for keyboard and screen reader accessibility.
+
+This theme customization feature not only adds a layer of personalization for users but also demonstrates skills in crafting flexible, reusable UI components with modern CSS and React state management. It’s a great example of creating a polished and user-centered interface using best practices in front-end development.
+
 ## Project Overview
 
 Trivio is a React application, built with a component-based architecture to maximize code reusability and maintainability. The app uses a combination of hooks and state management to dynamically update the quiz based on user interactions, and it integrates with the [Open Trivia Database API](https://opentdb.com/) to fetch trivia questions across various topics.

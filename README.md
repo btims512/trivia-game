@@ -133,7 +133,7 @@ Contributions to Trivio are welcome! If you’re interested in adding new featur
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the MIT License.
 
 ---
 
